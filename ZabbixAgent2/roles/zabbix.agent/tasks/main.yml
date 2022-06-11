@@ -1,0 +1,3 @@
+- name: Iniciando deploy do Zabbix-Agent2
+  include_tasks: rhel.yml
+  when:  ansible_os_family == "RedHat"
