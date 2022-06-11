@@ -3,24 +3,5 @@
   hosts: "{{ grupo }}"
   become: true
 
-  tasks:
-  - name: 'Aplicando as configurações'
-    template:
-      src: templates/zabbix_agentd2.j2
-      dest: /etc/zabbix/zabbix_agentd2.conf
-      owner: zabbix
-      group: zabbix
-      mode: 0644
-
-  - name: 'Alterando as permissões do arquivo'
-    file:
-      path: /etc/zabbix/
-      mode: 0775
-      owner: zabbix
-      group: zabbix  
-
-  - name: 'Reiniciando o serviço do Zabbix-Agent2'
-    systemd:
-      name: zabbix-agent2
-      state: restarted
-      enabled: yes
+  roles:
+    - {zabbix.agent2: aplicar_conf.yml}
