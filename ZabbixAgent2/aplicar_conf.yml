@@ -6,4 +6,4 @@
   tasks:
     - include_role:
         name: zabbix.agent2
-        tasks_from: conf.yml
+        tasks_from: alterar_conf.yml
