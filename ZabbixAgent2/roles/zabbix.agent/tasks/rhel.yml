@@ -1,8 +1,7 @@
-##--Rhel8--##
   - name: Desabilitando o SELinux
     selinux:
      state: disabled
-     
+
   - name: Instalando o pacote do zabbix no {{ansible_distribution}}-{{ansible_distribution_major_version}}
     dnf:
       disable_gpg_check: yes
