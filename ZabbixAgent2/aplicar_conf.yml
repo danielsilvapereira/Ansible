@@ -3,5 +3,7 @@
   hosts: "{{ grupo }}"
   become: true
 
-  roles:
-    - {zabbix.agent2: aplicar_conf.yml}
+  tasks:
+    - include_role:
+        name: zabbix.agent2
+        tasks_from: conf.yml
