@@ -14,3 +14,36 @@
      enablerepo: zabbix
      update_cache: true
      state: latest
+
+  - name: Aplica arquivo de configuracao Zabbix Agent - CentOS8
+    template:
+      src: templates/zabbix_agentd_rhel.j2
+      dest: /etc/zabbix/zabbix_agentd.conf
+      owner: zabbix
+      group: zabbix
+      mode: 0644
+
+  - name: Altera permissão Zabbix
+    file:
+      path: /etc/zabbix/
+      mode: 0775
+      owner: zabbix
+      group: zabbix  
+
+  - name: Habilita e inicia servico
+    systemd:
+      name: zabbix-agent
+      state: started
+      enabled: yes
+
+  - name: Adicionar portas do Zabbix Server no firewall
+    firewalld:
+      port: 10050/tcp
+      permanent: yes
+      state: enabled
+  
+  - name: Reload no firewalld
+    systemd:
+      name: firewalld
+      state: reloaded
+      enabled: yes
