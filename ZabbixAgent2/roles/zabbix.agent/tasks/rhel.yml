@@ -17,8 +17,8 @@
 
   - name: Aplicando as configurações
     template:
-      src: templates/zabbix_agentd_rhel.j2
-      dest: /etc/zabbix/zabbix_agentd.conf
+      src: templates/zabbix_agentd2_rhel.j2
+      dest: /etc/zabbix/zabbix_agentd2.conf
       owner: zabbix
       group: zabbix
       mode: 0644
