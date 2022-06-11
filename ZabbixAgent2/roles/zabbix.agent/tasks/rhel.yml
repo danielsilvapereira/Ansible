@@ -10,7 +10,7 @@
 
   - name: Instalando Zabbix Agent 2 no {{ansible_distribution}}-{{ansible_distribution_major_version}}
     dnf:
-     name: zabbix-agent
+     name: zabbix-agent2
      enablerepo: zabbix
      update_cache: true
      state: latest
@@ -32,7 +32,7 @@
 
   - name: Habilitando e iniciando o serviço
     systemd:
-      name: zabbix-agent
+      name: zabbix-agent2
       state: started
       enabled: yes
 
