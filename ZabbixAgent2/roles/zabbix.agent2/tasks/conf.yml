@@ -1,9 +1,3 @@
----
-- name: 'Aplicando as configurações do Zabbix-Agent2'
-  hosts: "{{ grupo }}"
-  become: true
-
-  tasks:
   - name: 'Aplicando as configurações'
     template:
       src: templates/zabbix_agentd2.j2
