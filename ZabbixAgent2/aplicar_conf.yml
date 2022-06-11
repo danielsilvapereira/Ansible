@@ -3,6 +3,7 @@
   hosts: "{{ grupo }}"
   become: true
 
+  tasks:
   - name: 'Aplicando as configurações'
     template:
       src: /roles/templates/zabbix_agentd2.j2
