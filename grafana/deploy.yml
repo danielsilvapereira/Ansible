@@ -10,13 +10,15 @@
     - name: 'Baixando o pacote do Grafana'
       become: yes
       get_url: 
-        url: https://dl.grafana.com/oss/release/grafana-9.0.0-1.x86_64.rpm
+        url: "https://dl.grafana.com/oss/release/grafana-9.0.0-1.x86_64.rpm"
         dest: /tmp
     
-    - dnf:
-      name: /tmp/grafana-9.0.0-1.x86_64.rpm
-      update_cache: true
-      state: present
+    - name: 'Instalando o Grafana'
+      dnf:
+        disable_gpg_check: yes
+        name: /tmp/grafana-9.0.0-1.x86_64.rpm
+        update_cache: true
+        state: present
 
     - name: 'Reiniciando o serviço do Grafana'
       systemd:
