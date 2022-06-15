@@ -2,6 +2,5 @@
 - name: Deploy do Zabbix Agent2
   hosts: "{{ grupo }}"
   become: true
-  # Chama a role
   roles:
     - zabbix.agent2

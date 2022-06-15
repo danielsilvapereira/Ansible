@@ -1,0 +1,37 @@
+---
+- name: 'Iniciando o deploy do Grafana'
+  hosts: "{{ grupo }}"
+  become: true
+  tasks:
+    - name: 'Desabilitando o SeLinux'
+      selinux:
+        state: disabled
+
+    - name: 'Baixando o pacote do Grafana'
+      become: yes
+      get_url: 
+        url: https://dl.grafana.com/oss/release/grafana-9.0.0-1.x86_64.rpm
+        dest: /tmp
+    
+    - dnf:
+      name: /tmp/grafana-9.0.0-1.x86_64.rpm
+      update_cache: true
+      state: present
+
+    - name: 'Reiniciando o serviço do Grafana'
+      systemd:
+        name: grafana-server
+        state: restarted
+        enabled: yes
+
+    - name: 'Liberando as portas no firewalld'
+      firewalld:
+        port: 3000/tcp
+        permanent: yes
+        state: enabled
+    
+    - name: 'Reiniciando o firewalld'
+      systemd:
+        name: firewalld
+        state: reloaded
+        enabled: yes  

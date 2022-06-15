@@ -2,7 +2,6 @@
 - name: 'Aplicando as configurações do Zabbix-Agent2'
   hosts: "{{ grupo }}"
   become: true
-
   tasks:
     - include_role:
         name: zabbix.agent2

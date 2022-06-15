@@ -1,3 +1,11 @@
 - name: Iniciando deploy do Zabbix-Agent2
   include_tasks: deploy_rhel.yml
   when:  ansible_os_family == "RedHat"
+
+- name: Iniciando deploy do Zabbix-Agent2
+  include_tasks: deploy_debian.yml
+  when:  ansible_os_family == "Debian"
+
+- name: Iniciando deploy do Zabbix-Agent2
+  include_tasks: deploy_ubuntu.yml
+  when:  ansible_os_family == "Ubuntu"
