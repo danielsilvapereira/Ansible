@@ -16,6 +16,7 @@
     state: present
 
 - name: Aplica arquivo de configuracao Zabbix Agent
+  tags: setupconfig
   template:
     src: templates/zabbix_agentd_ubuntu.j2
     dest: /etc/zabbix/zabbix_agentd.conf
@@ -24,6 +25,7 @@
     mode: 0644
 
 - name: Altera permissão Zabbix
+  tags: setupconfig
   file:
     path: /etc/zabbix/
     mode: 0775
@@ -31,6 +33,7 @@
     group: zabbix
 
 - name: Habilita e inicia servico do Linux
+  tags: setupconfig
   service:
     name: zabbix-agent
     enabled: yes
