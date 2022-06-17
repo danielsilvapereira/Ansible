@@ -18,7 +18,7 @@
 - name: Aplica arquivo de configuracao Zabbix Agent
   tags: setupconfig
   template:
-    src: templates/zabbix_agentd_ubuntu.j2
+    src: templates/zabbix_agentd2.j2
     dest: /etc/zabbix/zabbix_agentd.conf
     owner: zabbix
     group: zabbix
