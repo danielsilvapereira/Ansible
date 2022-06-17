@@ -2,6 +2,13 @@
     selinux:
      state: disabled
 
+  - name: Removendo Zabbix Agent antigo
+    become: true
+    dnf:
+      name:
+        - zabbix-agent
+      state: absent 
+
   - name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }} | Sistema Operacional: {{ansible_distribution}} - 8'
     dnf:
       disable_gpg_check: yes
