@@ -13,7 +13,7 @@
       owner: zabbix
       group: zabbix  
 
-  - name: 'Reiniciando o serviço do Zabbix-Agent2'
+  - name: 'Reiniciando o serviço do Zabbix Agent2'
     systemd:
       name: zabbix-agent2
       state: restarted

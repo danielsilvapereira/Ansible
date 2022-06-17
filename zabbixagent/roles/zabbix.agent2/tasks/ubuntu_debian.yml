@@ -1,8 +1,9 @@
 ---
-- name: Repo Zabbix - Ubuntu
+- name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }} | Sistema Operacional: {{ansible_distribution}} - 8'
   apt:
     deb: 'http://repo.zabbix.com/zabbix/5.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.0-1+focal_all.deb'
     update_cache: yes
+  when: {{ansible_distribution}} == ubuntu
 
 - name: Update apt-get
   apt: update_cache=yes
@@ -13,4 +14,4 @@
     - zabbix-agent
     - zabbix-sender
     - zabbix-get
-    state: present
+  state: present
