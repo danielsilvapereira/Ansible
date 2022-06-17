@@ -8,6 +8,7 @@
       name:
         - zabbix-agent
       state: absent 
+    when: ansible_distribution_major_version == '8'
 
   - name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }} | Sistema Operacional: {{ansible_distribution}} - 8'
     dnf:
