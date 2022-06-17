@@ -1,15 +1,15 @@
-  - name: Desabilitando o SELinux
+  - name: Desabilitando Selinux
     selinux:
      state: disabled
 
-  - name: Instalando o pacote do zabbix no {{ansible_distribution}}-{{ansible_distribution_major_version}}
+  - name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }} | Sistema Operacional: {{ansible_distribution}} - 8'
     dnf:
       disable_gpg_check: yes
       name: 'https://repo.zabbix.com/zabbix/{{ zabbix_release_version }}/rhel/{{ansible_distribution_major_version}}/x86_64/zabbix-release-{{ zabbix_release_version }}-1.el8.noarch.rpm'
       state: present
     when: ansible_distribution_major_version == '8'
 
-  - name: Instalando Zabbix Agent 2 no {{ansible_distribution}}-{{ansible_distribution_major_version}}
+  - name: 'Instalando Zabbix Agent2 | Sistema Operacional: {{ansible_distribution}} - 8'
     dnf:
      name: 
         - zabbix-agent2
@@ -20,14 +20,14 @@
      state: latest
     when: ansible_distribution_major_version == '8'
 
-  - name: Instalando o pacote do zabbix no {{ansible_distribution}}-{{ansible_distribution_major_version}}
+  - name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }} | Sistema Operacional: {{ansible_distribution}} - 8'
     yum:
       disable_gpg_check: true
       name: 'https://repo.zabbix.com/zabbix/{{ zabbix_release_version }}/rhel/{{ansible_distribution_major_version}}/x86_64/zabbix-release-{{ zabbix_release_version }}-1.el8.noarch.rpm'
       state: present
     when: ansible_distribution_major_version == '7'
  
-  - name: Instalando Zabbix Agent 2 no {{ansible_distribution}}-{{ansible_distribution_major_version}}
+  - name: 'Instalando Zabbix Agent2 | Sistema Operacional: {{ansible_distribution}} - 7'
     yum:
      name:
         - zabbix-agent2
