@@ -1,14 +1,14 @@
 ---
-- name: Deploy do Zabbix Agent2
+- name: Deploy do Zabbix Proxy
   hosts: "{{ grupo }}"
   become: true
   vars:
     - zabbix_release_version: 6.0
   
   roles:
-    - zabbix.agent2
+    - zabbixproxy
 
   post_tasks:
     - include_role:
-        name: zabbix.agent2
+        name: zabbixproxy
         tasks_from: setup.yml

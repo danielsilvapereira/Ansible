@@ -4,5 +4,5 @@
   become: true
   tasks:
     - include_role:
-        name: zabbix.agent2
+        name: zabbixagent
         tasks_from: setup.yml
