@@ -1,6 +1,6 @@
 ---
 - name: Deploy do Zabbix Proxy
-  hosts: "{{ grupo }}"
+  hosts: "zabbix_proxy"
   become: true
   vars:
     - zabbix_release_version: 6.0

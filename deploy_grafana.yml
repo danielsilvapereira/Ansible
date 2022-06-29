@@ -1,6 +1,6 @@
 ---
 - name: 'Iniciando o deploy do Grafana'
-  hosts: "{{ grupo }}"
+  hosts: "grafana"
   become: true
   tasks:
     - name: 'Desabilitando o SeLinux'
