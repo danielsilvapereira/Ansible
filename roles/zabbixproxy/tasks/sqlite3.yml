@@ -10,7 +10,7 @@
 
 - name: "Sqlite3 | Criando o banco de dados"
   file:
-    name: "{{ zabbix_proxy_dbname | dirname }}"
+    path: "/var/lib/zabbix/zabbix_proxy.db"
     mode: 0744
     owner: zabbix
     group: zabbix

@@ -32,7 +32,7 @@
     notify: reiniciar zabbix-proxy
     become: true
 
-  - name: "zabbix-proxy started"
+  - name: "Iniciando o serviço do Zabbix-Proxy"
     service:
       name: zabbix-proxy
       state: started
