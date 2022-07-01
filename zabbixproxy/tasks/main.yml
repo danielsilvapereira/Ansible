@@ -2,10 +2,10 @@
     selinux:
      state: disabled
 
-  - name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }}
+  - name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }}'
     dnf:
       disable_gpg_check: yes
-      name: 'https://repo.zabbix.com/zabbix/{{ zabbix_release_version }}/rhel/{{ansible_distribution_major_version}}/x86_64/zabbix-release-{{ zabbix_release_version }}-1.el8.noarch.rpm'
+      name: {{ zabbox_repo }}
       state: present
 
   - name: 'Instalando Zabbix Proxy'
