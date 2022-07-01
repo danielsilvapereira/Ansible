@@ -8,7 +8,6 @@
   when:
     - zabbix_proxy_dbname == "zabbix_proxy"
 
-
 - name: "Sqlite3 | Criando o banco de dados"
   file:
     name: "{{ zabbix_proxy_dbname | dirname }}"
@@ -23,7 +22,45 @@
   when:
     - zabbix_database_creation
 
-- name: "Sqlite3 |Importando o schema do banco de dados"
+- name: "RedHat | Set some facts Zabbix < 3.0"
+  set_fact:
+    apache_log: httpd
+    datafiles_path: "/usr/share/doc/zabbix-proxy-{{ zabbix_proxy_database }}-{{ zabbix_version }}*/create"
+  when:
+    - zabbix_version is version('3.0', '<')
+  tags:
+    - zabbix-proxy
+
+- name: "RedHat | Set facts for Zabbix >= 3.0"
+  set_fact:
+    apache_log: httpd
+    datafiles_path: "/usr/share/doc/zabbix-proxy-{{ zabbix_proxy_database }}-{{ zabbix_version }}*"
+  when:
+    - zabbix_version is version('3.0', '>=')
+    - zabbix_version is version('5.4', '<')
+  tags:
+    - zabbix-proxy
+
+- name: "RedHat | Set facts for Zabbix >= 5.4"
+  set_fact:
+    datafiles_path: "/usr/share/doc/zabbix-sql-scripts/{{ zabbix_proxy_database_long }}"
+  when:
+    - zabbix_version is version('5.4', '>=')
+  tags:
+    - zabbix-server
+
+- name: "RedHat | Set facts for Zabbix >= 3.0 and RedHat 8"
+  set_fact:
+    apache_log: httpd
+    datafiles_path: "/usr/share/doc/zabbix-proxy-{{ zabbix_proxy_database }}"
+  when:
+    - zabbix_version is version('3.0', '>=')
+    - zabbix_version is version('5.4', '<')
+    - ansible_distribution_major_version == '8'
+  tags:
+    - zabbix-proxy
+
+- name: "Sqlite3 | Importando o schema do banco de dados"
   become: true
   become_user: zabbix
   shell: |
