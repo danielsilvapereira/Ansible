@@ -1,0 +1,8 @@
+- name: "Reiniciando Zabbix-Proxy"
+  service:
+    name: zabbix-proxy
+    state: restarted
+    enabled: true
+  become: true
+  when:
+    - zabbix_proxy_manage_service | bool

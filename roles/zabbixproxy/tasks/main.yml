@@ -1,12 +1,16 @@
-  - name: Desabilitando Selinux
+---  
+  - name: "Desabilitando Selinux"
     selinux:
      state: disabled
 
-  - name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }}'
+  - name: "Baixando o pacote do Zabbix {{ zabbix_proxy_version }}"
     dnf:
       disable_gpg_check: yes
       name: '{{ zabbix_repo }}'
       state: present
+
+  - name: "Instalando o banco de dados"
+    include: "{{ zabbix_proxy_database_long }}.yml"
 
   - name: 'Instalando Zabbix Proxy'
     dnf:
@@ -17,6 +21,25 @@
      enablerepo: zabbix
      update_cache: true
      state: latest
+
+  - name: "Configurando o zabbix-proxy"
+    template:
+      src: zabbix_proxy.conf.j2
+      dest: /etc/zabbix/zabbix_proxy.conf
+      owner: zabbix
+      group: zabbix
+      mode: "{{ zabbix_proxy_conf_mode }}"
+    notify: reiniciar zabbix-proxy
+    become: true
+    
+
+  - name: "zabbix-proxy started"
+    service:
+      name: zabbix-proxy
+      state: started
+      enabled: true
+    become: true
+    when: zabbix_proxy_manage_service | bool
 
   - name: Reiniciando o firewalld
     systemd:
