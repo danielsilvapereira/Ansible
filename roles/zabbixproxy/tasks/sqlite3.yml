@@ -22,18 +22,16 @@
   when:
     - zabbix_database_creation
 
-- name: "RedHat | Set some facts Zabbix < 3.0"
+- name: "RedHat | Definindo variaveis - Zabbix < 3.0"
   set_fact:
-    apache_log: httpd
     datafiles_path: "/usr/share/doc/zabbix-proxy-{{ zabbix_proxy_database }}-{{ zabbix_version }}*/create"
   when:
     - zabbix_version is version('3.0', '<')
   tags:
     - zabbix-proxy
 
-- name: "RedHat | Set facts for Zabbix >= 3.0"
+- name: "RedHat | Definindo variaveis - Zabbix >= 3.0"
   set_fact:
-    apache_log: httpd
     datafiles_path: "/usr/share/doc/zabbix-proxy-{{ zabbix_proxy_database }}-{{ zabbix_version }}*"
   when:
     - zabbix_version is version('3.0', '>=')
@@ -41,7 +39,7 @@
   tags:
     - zabbix-proxy
 
-- name: "RedHat | Set facts for Zabbix >= 5.4"
+- name: "RedHat | Definindo variaveis - Zabbix >= 5.4"
   set_fact:
     datafiles_path: "/usr/share/doc/zabbix-sql-scripts/{{ zabbix_proxy_database_long }}"
   when:
@@ -49,9 +47,8 @@
   tags:
     - zabbix-server
 
-- name: "RedHat | Set facts for Zabbix >= 3.0 and RedHat 8"
+- name: "RedHat | Definindo variaveis - >= 3.0 e RedHat 8"
   set_fact:
-    apache_log: httpd
     datafiles_path: "/usr/share/doc/zabbix-proxy-{{ zabbix_proxy_database }}"
   when:
     - zabbix_version is version('3.0', '>=')
