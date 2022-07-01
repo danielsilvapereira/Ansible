@@ -2,7 +2,7 @@
 
 # Tarefa para configurar o banco de dados sqlite3 para o Zabbix-Proxy
 
-- name: "Sqlite3 | Diretório para o banco de dados"
+- name: "Sqlite3 | Definindo "
   set_fact:
     zabbix_proxy_dbname: /var/lib/zabbix/zabbix_proxy.db
   when:

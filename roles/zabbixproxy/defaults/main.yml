@@ -8,8 +8,56 @@ zabbix_version: "{{ zabbix_proxy_version }}"
 ## Repositorio do Zabbix
 zabbix_repo: 'https://repo.zabbix.com/zabbix/{{ zabbix_version }}/rhel/{{ansible_distribution_major_version}}/x86_64/zabbix-release-{{ zabbix_version }}-{{ zabbix_proxy_version_minor }}.el{{ansible_distribution_major_version}}.noarch.rpm'
 
-## Variaveis arquivo de conf
+## Variaveis de criação do arquivo conf
 zabbix_proxy_conf_mode: "0644"
+
+## Variaveis arquivo de conf
+zabbix_proxy_mode: 0
+zabbix_proxy_server: 
+zabbix_proxy_hostname: 
+zabbix_proxy_listenport: 10051
+zabbix_proxy_logfilesize: 10
+zabbix_proxy_enableremotecommands: 0
+zabbix_proxy_debuglevel: 3
+zabbix_proxy_dbhost: localhost
+zabbix_proxy_dbname: zabbix_proxy
+zabbix_proxy_dbschema:
+zabbix_proxy_dbuser: zabbix_proxy
+zabbix_proxy_dbpassword: zabbix_proxy
+zabbix_proxy_localbuffer: 0
+zabbix_proxy_offlinebuffer: 1
+zabbix_proxy_heartbeatfrequency: 60
+zabbix_proxy_configfrequency: 3600
+zabbix_proxy_datasenderfrequency: 1
+zabbix_proxy_startpollers: 5
+zabbix_proxy_startipmipollers: 0
+zabbix_proxy_startpollersunreachable: 1
+zabbix_proxy_starttrappers: 5
+zabbix_proxy_startpingers: 1
+zabbix_proxy_startdiscoverers: 1
+zabbix_proxy_starthttppollers: 1
+zabbix_proxy_startpreprocessors: 3
+zabbix_proxy_javagateway:
+zabbix_proxy_javagatewayport: 10052
+zabbix_proxy_startjavapollers: 5
+zabbix_proxy_startvmwarecollector: 0
+zabbix_proxy_vmwarefrequency: 60
+zabbix_proxy_vmwarecachesize: 8
+zabbix_proxy_snmptrapperfile: /tmp/zabbix_traps.tmp
+zabbix_proxy_snmptrapper: 0
+zabbix_proxy_listenip:
+zabbix_proxy_housekeepingfrequency: 1
+zabbix_proxy_cachesize: 8
+zabbix_proxy_startdbsyncers: 4
+zabbix_proxy_historycachesize: 8
+zabbix_proxy_historyindexcachesize: 4
+zabbix_proxy_historytextcachesize: 16
+zabbix_proxy_timeout: 3
+zabbix_proxy_trappertimeout: 300
+zabbix_proxy_unreachableperiod: 45
+zabbix_proxy_unavaliabledelay: 60
+zabbix_proxy_unreachabedelay: 15
+zabbix_proxy_allowroot: 0
 
 ## Banco de dados escolhido
 #zabbix_proxy_database: mysql
