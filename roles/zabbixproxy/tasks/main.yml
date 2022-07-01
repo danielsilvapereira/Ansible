@@ -5,7 +5,7 @@
   - name: 'Baixando o pacote do Zabbix {{ zabbix_release_version }}'
     dnf:
       disable_gpg_check: yes
-      name: {{ zabbix_repo }}
+      name: '{{ zabbix_repo }}'
       state: present
 
   - name: 'Instalando Zabbix Proxy'
