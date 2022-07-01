@@ -31,7 +31,6 @@
       mode: "{{ zabbix_proxy_conf_mode }}"
     notify: reiniciar zabbix-proxy
     become: true
-    
 
   - name: "zabbix-proxy started"
     service:
