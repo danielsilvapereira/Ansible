@@ -68,9 +68,7 @@ zabbix_proxy_database: sqlite3
 zabbix_proxy_database_long: sqlite3
 
 ## Variaveis para banco de dados
-zabbix_proxy_dbname: zabbix_proxy
 zabbix_database_creation: true
-zabbix_proxy_dbpassword: zabbix_proxy
 
 ## Não sei ainda
 zabbix_proxy_manage_service: true
