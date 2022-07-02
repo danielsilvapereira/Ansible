@@ -10,7 +10,7 @@
 #
 # Mandatory: no
 # Default:
-# ProxyMode=0
+ProxyMode={{ zabbix_proxy_mode }}
 
 ### Option: Server
 #	If ProxyMode is set to active mode:
@@ -29,7 +29,7 @@
 # Default:
 # Server=
 
-Server=127.0.0.1
+Server={{ zabbix_proxy_server }}
 
 ### Option: Hostname
 #	Unique, case sensitive Proxy name. Make sure the Proxy name is known to the server!
@@ -37,9 +37,7 @@ Server=127.0.0.1
 #
 # Mandatory: no
 # Default:
-# Hostname=
-
-Hostname=Zabbix proxy
+# Hostname={{ zabbix_proxy_hostname }}
 
 ### Option: HostnameItem
 #	Item used for generating Hostname if it is undefined.
@@ -47,7 +45,7 @@ Hostname=Zabbix proxy
 #
 # Mandatory: no
 # Default:
-# HostnameItem=system.hostname
+HostnameItem=system.hostname
 
 ### Option: ListenPort
 #	Listen port for trapper.
@@ -92,7 +90,7 @@ LogFile=/var/log/zabbix/zabbix_proxy.log
 # Default:
 # LogFileSize=1
 
-LogFileSize=0
+LogFileSize={{ zabbix_proxy_logfilesize }}
 
 ### Option: DebugLevel
 #	Specifies debug level:
@@ -115,7 +113,7 @@ LogFileSize=0
 #
 # Mandatory: no
 # Default:
-# EnableRemoteCommands=0
+EnableRemoteCommands={{ zabbix_proxy_enableremotecommands }}
 
 ### Option: LogRemoteCommands
 #		Enable logging of executed shell commands as warnings.
@@ -168,7 +166,7 @@ SocketDir=/run/zabbix
 # Default:
 # DBName=
 
-DBName=zabbix_proxy
+DBName={{ zabbix_proxy_dbname }}
 
 ### Option: DBSchema
 #	Schema name. Used for PostgreSQL.
@@ -236,7 +234,7 @@ DBUser=zabbix
 # Mandatory: no
 # Range: 1-720
 # Default:
-# ProxyOfflineBuffer=1
+ProxyOfflineBuffer={{ zabbix_proxy_offlinebuffer }}
 
 ### Option: HeartbeatFrequency
 #	Frequency of heartbeat messages in seconds.
@@ -247,7 +245,7 @@ DBUser=zabbix
 # Mandatory: no
 # Range: 0-3600
 # Default:
-# HeartbeatFrequency=60
+HeartbeatFrequency={{ zabbix_proxy_heartbeatfrequency }}
 
 ### Option: ConfigFrequency
 #	How often proxy retrieves configuration data from Zabbix Server in seconds.
@@ -256,7 +254,7 @@ DBUser=zabbix
 # Mandatory: no
 # Range: 1-3600*24*7
 # Default:
-# ConfigFrequency=3600
+ConfigFrequency={{ zabbix_proxy_configfrequency }}
 
 ### Option: DataSenderFrequency
 #	Proxy will send collected data to the Server every N seconds.
@@ -265,7 +263,7 @@ DBUser=zabbix
 # Mandatory: no
 # Range: 1-3600
 # Default:
-# DataSenderFrequency=1
+DataSenderFrequency={{ zabbix_proxy_datasenderfrequency }}
 
 ############ ADVANCED PARAMETERS ################
 

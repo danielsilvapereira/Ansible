@@ -15,20 +15,21 @@ zabbix_proxy_conf_mode: "0644"
 zabbix_proxy_mode: 0
 zabbix_proxy_server: 
 zabbix_proxy_hostname: 
-zabbix_proxy_listenport: 10051
 zabbix_proxy_logfilesize: 10
-zabbix_proxy_enableremotecommands: 0
-zabbix_proxy_debuglevel: 3
+zabbix_proxy_enableremotecommands: 1
 zabbix_proxy_dbhost: localhost
 zabbix_proxy_dbname: zabbix_proxy
+##Banco de dados
+#Só para pgsql
 zabbix_proxy_dbschema:
+#Ignora se for sqlite3
 zabbix_proxy_dbuser: zabbix_proxy
 zabbix_proxy_dbpassword: zabbix_proxy
-zabbix_proxy_localbuffer: 0
 zabbix_proxy_offlinebuffer: 1
 zabbix_proxy_heartbeatfrequency: 60
 zabbix_proxy_configfrequency: 3600
 zabbix_proxy_datasenderfrequency: 1
+##Processos coletores
 zabbix_proxy_startpollers: 5
 zabbix_proxy_startipmipollers: 0
 zabbix_proxy_startpollersunreachable: 1
