@@ -28,7 +28,7 @@
 
   - name: "Windows | Verificando se o serviço existe"
     ansible.windows.win_service:
-      name: "Zabbix Agent2"
+      name: "Zabbix Agent 2"
     register: zabbix_windows_service
 
   - name: "Windows | Registrando o serviço"

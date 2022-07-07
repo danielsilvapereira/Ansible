@@ -29,8 +29,8 @@
       dest: C:\Zabbix2\conf\zabbix_agent2.conf
     when: ansible_os_family == "Windows"
 
-  - name: Restart a service
-  ansible.windows.win_service:
-    name: Zabbix Agent2
-    state: restarted
-  when: ansible_os_family == "Windows"
+  - name: 'Windows | Reiniciando o serviço'
+    ansible.windows.win_service:
+      name: Zabbix Agent 2
+      state: restarted
+    when: ansible_os_family == "Windows"
