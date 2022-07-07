@@ -1,6 +1,6 @@
   - name: 'Windows: Removendo o Zabbix Agent'
     ansible.windows.win_service:
-      name: ZabbixAgent
+      name: Zabbix Agent
       state: absent
 
   - name: "Windows | Configurando path zabbix.exe"
@@ -10,20 +10,20 @@
 
   - name: "Windows | Baixando o pacote (agent 2)"
     ansible.windows.win_get_url:
-      url: "https://cdn.zabbix.com/zabbix/binaries/stable/6.0/6.0.6/zabbix_agent2-6.0.6-windows-amd64-openssl-static.zip"
-      dest: "C:\Zabbix2\zabbix_agent2-6.0.6-windows-amd64-openssl-static.zip"
+      url: https://cdn.zabbix.com/zabbix/binaries/stable/6.0/6.0.6/zabbix_agent2-6.0.6-windows-amd64-openssl-static.zip
+      dest: C:\Zabbix2\zabbix_agent2-6.0.6-windows-amd64-openssl-static.zip
       force: false
       follow_redirects: all
 
   - name: "Windows | Descompactando o arquivo"
     community.windows.win_unzip:
-      src: 'C:\Zabbix2\zabbix_agent2-6.0.6-windows-amd64-openssl-static.zip'
-      dest: "C:\Zabbix"
-      creates: "C:\Zabbix\bin\zabbix_agent2.exe"
+      src: C:\Zabbix2\zabbix_agent2-6.0.6-windows-amd64-openssl-static.zip
+      dest: "C:\Zabbix2"
+      creates: "C:\Zabbix2\bin\zabbix_agent2.exe"
 
   - name: "Windows | Limpando o download do Zabbix Agent Zip"
     ansible.windows.win_file:
-      path: 'C:\Zabbix2\zabbix_agent2-6.0.6-windows-amd64-openssl-static.zip'
+      path: C:\Zabbix2\zabbix_agent2-6.0.6-windows-amd64-openssl-static.zip
       state: absent
 
   - name: "Windows | Registrando o serviço"
