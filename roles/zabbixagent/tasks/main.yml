@@ -6,6 +6,6 @@
   include_tasks: ubuntu_debian.yml
   when:  ansible_os_family == "Debian" or ansible_os_family == "Ubuntu"
 
-  - name: 'Iniciando deploy do Zabbix-Agent2 | Sistema Operacional: Windows'
+- name: 'Iniciando deploy do Zabbix-Agent2 | Sistema Operacional: Windows'
   include_tasks: windows.yml
   when:  ansible_os_family == "Windows"
