@@ -1,0 +1,8 @@
+---
+- name: 'Aplicando as configurações do Zabbix-Agent2'
+  hosts: "{{ grupo }}"
+  become: true
+  tasks:
+    - include_role:
+        name: zabbixagent
+        tasks_from: setup.yml
