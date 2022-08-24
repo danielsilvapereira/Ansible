@@ -1,7 +1,0 @@
----
-- name: Deploy do Zabbix Proxy
-  hosts: "zabbix_proxy"
-  become: true
-  
-  roles:
-    - zabbixproxy
